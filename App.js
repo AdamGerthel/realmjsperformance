@@ -10,7 +10,6 @@ import {
 import {Header, Colors} from 'react-native/Libraries/NewAppScreen';
 import Realm from 'realm';
 import * as realmSchemas from './schemas';
-import sampleSaveData from './sample-save.json';
 
 const objectsToWrite = 100;
 
@@ -30,12 +29,6 @@ class App extends Component {
         schema: [realmSchemas.lightObjectSchema],
         schemaVersion: realmSchemas.lightObjectSchema.schemaVersion,
         path: 'lightObject.realm',
-      });
-
-      this.realmInstance.save = await Realm.open({
-        schema: [realmSchemas.save],
-        schemaVersion: realmSchemas.save.schemaVersion,
-        path: 'save.realm',
       });
     } catch (error) {
       console.log(error);
@@ -79,24 +72,6 @@ class App extends Component {
     const endLightTime = global.performance.now();
     info.totalLightObjectWrite = endLightTime - startLightTime;
     info.avgLightObjectWrite = info.totalLightObjectWrite / objectsToWrite;
-
-    console.log('TCL: App -> writeData -> this.realmInstance.save.write');
-    const startSaveTime = global.performance.now();
-    this.realmInstance.save.write(() => {
-      for (let i = 0; i < objectsToWrite; i++) {
-        let obj = {
-          name: `save-${i}`,
-          backgroundImage: '123',
-          timeSpent: 123,
-          timestamp: 123,
-          _saveData: JSON.stringify(sampleSaveData),
-        };
-        this.realmInstance.save.create('Save', obj, 'all');
-      }
-    });
-    const endSaveTime = global.performance.now();
-    info.totalSaveObjectWrite = endSaveTime - startSaveTime;
-    info.avgSaveObjectWrite = info.totalSaveObjectWrite / objectsToWrite;
 
     console.log('TCL: App -> writeData -> info', info);
     this.setState({info});

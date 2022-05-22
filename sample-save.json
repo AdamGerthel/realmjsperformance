@@ -1,0 +1,377 @@
+{
+  "_id": "c21d432b-8f0e-4810-b81b-dcc5d7468af9",
+  "movement": {
+    "locationId": "5f75b0e95cb8bf4d1cd48573",
+    "pendingLocationId": null,
+    "currentPathId": null,
+    "pathEncounterId": null
+  },
+  "scene": {
+    "narrative": [
+      "You awaken from nightmares of blood and steel. There are people around you. They are talking, but you can’t make out what they are saying.",
+      "You hear the voice of an old man. He says: “Another soldier from the frontline. Seems like a lost cause, if you ask me…”"
+    ],
+    "nodeId": null,
+    "stateEncounter": null,
+    "npcs": []
+  },
+  "character": {
+    "level": 1,
+    "experience": 0,
+    "unspentStatPoints": 0,
+    "health": 70,
+    "baseStrength": 6,
+    "baseCharisma": 1,
+    "baseResilience": 1,
+    "baseAgility": 1,
+    "basePerception": 1,
+    "gold": 0,
+    "displayItemNotification": false,
+    "itemSlots": {
+      "head": null,
+      "accessory": null,
+      "body": null,
+      "feet": null,
+      "hands": null,
+      "mainHand": null,
+      "offHand": null,
+      "ornament": null
+    },
+    "inventory": [],
+    "effects": []
+  },
+  "questLog": {
+    "displayNotification": false,
+    "items": []
+  },
+  "variables": {
+    "list": [
+      {
+        "_id": "5fccbfe9a6ae9a2119adbffa",
+        "type": "number",
+        "value": 3
+      },
+      {
+        "_id": "5fccd30ca6ae9abe56adc018",
+        "type": "number",
+        "value": 8
+      },
+      {
+        "_id": "5fccd32ea6ae9aa8bcadc019",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd360a6ae9a9da7adc01a",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd396a6ae9a0b17adc01b",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd3c8a6ae9a77a3adc01c",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd3e0a6ae9a9f9eadc01d",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd429a6ae9a67b7adc01e",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd44ca6ae9a607aadc01f",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd475a6ae9a75bdadc020",
+        "type": "number",
+        "value": 10
+      },
+      {
+        "_id": "5fccd503a6ae9aa6b6adc021",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd520a6ae9a1dd0adc022",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd56da6ae9a39c4adc023",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd57fa6ae9a0aafadc024",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd6e1a6ae9aded3adc029",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd700a6ae9a45beadc02a",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd715a6ae9a6c83adc02b",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd7a9a6ae9a183cadc02c",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccd87ca6ae9a3128adc02d",
+        "type": "number",
+        "value": 2
+      },
+      {
+        "_id": "5fccda36a6ae9a39c4adc02f",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccda8da6ae9a0632adc030",
+        "type": "number",
+        "value": 4
+      },
+      {
+        "_id": "5fccdadaa6ae9ae991adc031",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fccdaeda6ae9acf72adc032",
+        "type": "number",
+        "value": 1
+      },
+      {
+        "_id": "5fccdb47a6ae9a3439adc033",
+        "type": "number",
+        "value": 5
+      },
+      {
+        "_id": "5fccdd4ca6ae9a17e6adc034",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5fe72807129f24d323ec90b8",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "5ffa058e129f24d0a3eca22b",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "5ffa05a2129f243950eca22c",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "5ffa4f4d129f24cb50eca868",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "5ffb93c2129f24ac4decb232",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "6013665eefd528dd32d6547c",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "601e5946efd5288c48d6762b",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "602e33b7efd5282e32d775ed",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "602f9950efd5282ae6d831c9",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "602ffccaefd5281befd83777",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "60350cf4efd5289dc6d83fc9",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "603546b9efd528fd12d83fca",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "606d9745e2f50540e4ed8b1b",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "60808ecee2f5053607ed935d",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "60d45a3df12e5477f03f6f00",
+        "type": "boolean",
+        "value": true
+      },
+      {
+        "_id": "61257a1dc26dadc063b167fd",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "61284bbec26dad167fb174df",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "614a00d242dd024efeeb9018",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "617c9436b8d63c8f21873ca1",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "617c9444b8d63cfb9e873ca2",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "617cec58b8d63c36018748e5",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "617cf7d9b8d63ca7aa874e39",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "619f782d178f547f6312ccd9",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "61e6f2e829c339001cca3e14",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "61eaf1b4402094001c3c43c2",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "61f86bb162570e001c283aec",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "61ffd6f99e01e2001c46a24b",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "621409ceb0e452001c8e4047",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "6266632115825b001cef2a09",
+        "type": "number",
+        "value": 0
+      },
+      {
+        "_id": "626a206115825b001cef515f",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "62787b389704eb001dd9995b",
+        "type": "boolean",
+        "value": true
+      },
+      {
+        "_id": "62787b479704eb001dd99961",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "_id": "627880449704eb001dd99bf3",
+        "type": "boolean",
+        "value": true
+      },
+      {
+        "_id": "6278f8ad9704eb001dd9a7ab",
+        "type": "boolean",
+        "value": false
+      }
+    ]
+  },
+  "statistics": {
+    "usedOptions": {
+      "5fb3ff6ffc341e000040c019": 1
+    },
+    "usedMovementOptions": {},
+    "usedPaths": {},
+    "seenPathEncounters": {},
+    "seenNodes": {},
+    "seenScenes": {},
+    "seenLocations": {},
+    "seenAreas": {},
+    "seenOptionOutcomes": {
+      "5fb40302fc341e000040c024": 1
+    },
+    "defeatedNpcs": {},
+    "seenItems": {},
+    "seenMedia": {},
+    "openedScriptures": {},
+    "lastSeenArea": null,
+    "lastSeenLocation": null,
+    "lastSeenScene": null,
+    "lastSeenNode": null,
+    "lastUsedOption": "5fb3ff6ffc341e000040c019",
+    "lastUsedMovementOption": null
+  },
+  "inspector": {
+    "sceneRecorder": {
+      "recordedScene": null,
+      "isRecording": false
+    }
+  }
+}

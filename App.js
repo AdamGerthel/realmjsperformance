@@ -9,76 +9,53 @@ import {
 } from 'react-native';
 import {Header, Colors} from 'react-native/Libraries/NewAppScreen';
 import Realm from 'realm';
-import * as realmSchemas from './schemas';
 
-const objectsToWrite = 100;
+export const objectSchema = {
+  name: 'sampleObject',
+  properties: {
+    id: 'string',
+  },
+};
 
 class App extends Component {
-  state = {};
+  state = {log: []};
   realmInstance = {};
 
   async componentDidMount() {
     try {
-      this.realmInstance.parents = await Realm.open({
-        schema: [realmSchemas.parentSchema, realmSchemas.childSchema],
-        schemaVersion: realmSchemas.parentSchema.schemaVersion,
-        path: 'parents.realm',
+      this.realmInstance = await Realm.open({
+        schema: [objectSchema],
       });
 
-      this.realmInstance.lightObjects = await Realm.open({
-        schema: [realmSchemas.lightObjectSchema],
-        schemaVersion: realmSchemas.lightObjectSchema.schemaVersion,
-        path: 'lightObject.realm',
-      });
+      await this.writeData('Test 1', 1);
+      await this.writeData('Test 2', 100);
+      await this.writeData('Test 3', 1000);
+      await this.writeData('Test 4', 10000);
     } catch (error) {
       console.log(error);
     }
-
-    await this.writeData();
   }
 
-  async writeData() {
-    let info = {};
+  async writeData(name, quantity) {
+    const {realmInstance} = this;
 
-    console.log('TCL: App -> writeData -> this.realmInstance.parents.write');
-    const startParentTime = global.performance.now();
-    this.realmInstance.parents.write(() => {
-      for (let i = 0; i < objectsToWrite; i++) {
-        let obj = {
-          id: `parent${i}`,
-          child: {
-            id: `child${i}`,
-          },
-        };
-        this.realmInstance.parents.create('parent', obj);
+    const start = global.performance.now();
+    realmInstance.write(() => {
+      for (let i = 0; i < quantity; i++) {
+        realmInstance.create('sampleObject', {
+          id: `object-${i}`,
+        });
       }
     });
-    const endParentTime = global.performance.now();
-    info.totalParentWrite = endParentTime - startParentTime;
-    info.avgParentWrite = info.totalParentWrite / objectsToWrite;
+    const end = global.performance.now();
 
-    console.log(
-      'TCL: App -> writeData -> this.realmInstance.lightObjects.write',
-    );
-    const startLightTime = global.performance.now();
-    this.realmInstance.lightObjects.write(() => {
-      for (let i = 0; i < objectsToWrite; i++) {
-        let obj = {
-          id: `lightObject${i}`,
-        };
-        this.realmInstance.lightObjects.create('lightObject', obj);
-      }
+    this.setState({
+      log: [...this.state.log, {test: name, quantity, time: end - start}],
     });
-    const endLightTime = global.performance.now();
-    info.totalLightObjectWrite = endLightTime - startLightTime;
-    info.avgLightObjectWrite = info.totalLightObjectWrite / objectsToWrite;
-
-    console.log('TCL: App -> writeData -> info', info);
-    this.setState({info});
   }
 
   render() {
-    const {info} = this.state;
+    const {log} = this.state;
 
     return (
       <>
@@ -90,13 +67,15 @@ class App extends Component {
             <Header />
           </ScrollView>
           <View style={styles.container}>
-            {!info ? (
+            {log.length === 0 ? (
               <Text>realm is loading...</Text>
             ) : (
               <View>
-                <Text>Wrote {objectsToWrite} objects</Text>
-                {Object.entries(info).map(([key, val]) => (
-                  <Text key={key}>{`${key} - ${val} ms`}</Text>
+                {log.map(logEntry => (
+                  <Text
+                    key={
+                      logEntry.test
+                    }>{`${logEntry.test} (${logEntry.quantity} objects) - ${logEntry.time} ms`}</Text>
                 ))}
               </View>
             )}

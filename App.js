@@ -89,7 +89,7 @@ class App extends Component {
 
     realmInstance.write(() => {
       for (let i = 0; i < quantity; i++) {
-        realmInstance.create('simpleSampleObject', data);
+        realmInstance.create(schema, data);
       }
     });
 

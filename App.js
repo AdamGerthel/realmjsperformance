@@ -10,12 +10,54 @@ import {
 import {Header, Colors} from 'react-native/Libraries/NewAppScreen';
 import Realm from 'realm';
 
-export const objectSchema = {
-  name: 'sampleObject',
+const uuid = (): TUuid => {
+  let dt = new Date().getTime()
+
+  const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = (dt + Math.random() * 16) % 16 | 0
+    dt = Math.floor(dt / 16)
+    return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16)
+  })
+
+  return uuid
+}
+
+export const simpleObjectSchema = {
+  name: 'simpleSampleObject',
   properties: {
     id: 'string',
   },
 };
+
+export const complexObjectChildSchema = {
+  name: 'complexSampleChildObject',
+  properties: {
+    childList: 'string[]'
+  },
+};
+
+export const complexObjectSchema = {
+  name: 'complexSampleObject',
+  properties: {
+    id: 'string',
+    list: 'string[]',
+    children: `${complexObjectChildSchema.name}[]`
+  },
+};
+
+class SimpleObject {
+  id = uuid()
+}
+
+class ComplexObject {
+  id = uuid()
+  list = Array(1000).fill(uuid())
+  children = Array(1000).fill(new ComplexObjectChild())
+}
+
+class ComplexObjectChild {
+  childList = Array(1000).fill(uuid())
+}
 
 class App extends Component {
   state = {log: []};
@@ -24,33 +66,37 @@ class App extends Component {
   async componentDidMount() {
     try {
       this.realmInstance = await Realm.open({
-        schema: [objectSchema],
+        schema: [simpleObjectSchema],
       });
 
-      await this.writeData('Test 1', 1);
-      await this.writeData('Test 2', 100);
-      await this.writeData('Test 3', 1000);
-      await this.writeData('Test 4', 10000);
+      await this.writeData('Test 1', 'simpleSampleObject', 1, new SimpleObject());
+      await this.writeData('Test 2', 'simpleSampleObject', 100, new SimpleObject());
+      await this.writeData('Test 3', 'simpleSampleObject', 1000, new SimpleObject());
+      await this.writeData('Test 4', 'simpleSampleObject', 10000, new SimpleObject());
+      await this.writeData('Test 5', 'complexSampleObject', 1, new ComplexObject());
+      await this.writeData('Test 5', 'complexSampleObject', 100, new ComplexObject());
+      await this.writeData('Test 5', 'complexSampleObject', 1000, new ComplexObject());
+      await this.writeData('Test 5', 'complexSampleObject', 10000, new ComplexObject());
     } catch (error) {
       console.log(error);
     }
   }
 
-  async writeData(name, quantity) {
+  async writeData(name, schema, quantity, data = {}) {
     const {realmInstance} = this;
 
     const start = global.performance.now();
+
     realmInstance.write(() => {
       for (let i = 0; i < quantity; i++) {
-        realmInstance.create('sampleObject', {
-          id: `object-${i}`,
-        });
+        realmInstance.create('simpleSampleObject', data);
       }
     });
+
     const end = global.performance.now();
 
     this.setState({
-      log: [...this.state.log, {test: name, quantity, time: end - start}],
+      log: [...this.state.log, {id: uuid(), schema, quantity, time: end - start}],
     });
   }
 
@@ -74,8 +120,8 @@ class App extends Component {
                 {log.map(logEntry => (
                   <Text
                     key={
-                      logEntry.test
-                    }>{`${logEntry.test} (${logEntry.quantity} objects) - ${logEntry.time} ms`}</Text>
+                      logEntry.id
+                    }>{`${logEntry.schema} (${logEntry.quantity} objects) - ${logEntry.time.toFixed(4)} ms`}</Text>
                 ))}
               </View>
             )}

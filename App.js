@@ -51,12 +51,12 @@ class SimpleObject {
 
 class ComplexObject {
   id = uuid()
-  list = Array(1000).fill(uuid())
-  children = Array(1000).fill(new ComplexObjectChild())
+  list = Array(50).fill(uuid())
+  children = Array(50).fill(new ComplexObjectChild())
 }
 
 class ComplexObjectChild {
-  childList = Array(1000).fill(uuid())
+  childList = Array(50).fill(uuid())
 }
 
 class App extends Component {
@@ -66,7 +66,7 @@ class App extends Component {
   async componentDidMount() {
     try {
       this.realmInstance = await Realm.open({
-        schema: [simpleObjectSchema],
+        schema: [simpleObjectSchema, complexObjectSchema, complexObjectChildSchema],
       });
 
       await this.writeData('Test 1', 'simpleSampleObject', 1, new SimpleObject());
@@ -75,8 +75,6 @@ class App extends Component {
       await this.writeData('Test 4', 'simpleSampleObject', 10000, new SimpleObject());
       await this.writeData('Test 5', 'complexSampleObject', 1, new ComplexObject());
       await this.writeData('Test 5', 'complexSampleObject', 100, new ComplexObject());
-      await this.writeData('Test 5', 'complexSampleObject', 1000, new ComplexObject());
-      await this.writeData('Test 5', 'complexSampleObject', 10000, new ComplexObject());
     } catch (error) {
       console.log(error);
     }
